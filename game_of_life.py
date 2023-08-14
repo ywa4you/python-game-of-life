@@ -69,16 +69,15 @@ def is_alive(y, x, field):
 
     for yf in range(-1, 2):
         for xf in range(-1, 2):
-            if field[y+yf][x+xf] == 1:
-                if yf != 0 and xf != 0:
-                    count += 1
+                if yf != 0 or xf != 0:
+                   if field[y+yf][x+xf] == 1:
+                       count += 1
 
-    # uncomment the print() statement for debugging
-    #print(y, x, count)
-    if count <= 1:
-        return False
-    elif count == 2 or count == 3:
-        return True
+    if 2 <= count <= 3:
+        if field[y][x] == 0 and count == 2:
+            return False
+        else:
+            return True
     else:
         return False
 
@@ -89,7 +88,6 @@ if __name__ == "__main__":
     rows = 27
     coloumns = 49
     last_gen = 10
-
     # generate field
     cur_field = []
     for row in range(rows):
