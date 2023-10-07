@@ -69,15 +69,15 @@ def is_alive(y, x, field):
 
     for yf in range(-1, 2):
         for xf in range(-1, 2):
-            if field[y+yf][x+xf] == 1:
-                if yf != 0 and xf != 0:
+            if yf != 0 or xf != 0:
+                if field[y+yf][x+xf] == 1:
                     count += 1
 
     # uncomment the print() statement for debugging
-    #print(y, x, count)
-    if count <= 1:
-        return False
-    elif count == 2 or count == 3:
+    # print(y, x, count)
+    if count == 3:
+        return True
+    elif count == 2 and field[y][x] == 1:
         return True
     else:
         return False
